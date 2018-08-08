@@ -1,11 +1,25 @@
 ##!/bin/bash
 
 #initial input for this is an eprime generated .txt file which has been renamed to eprime.txt
+#may be run in same file as eprime.txt as is
+#to run multiple subjects in loop, uncomment section indicated below titled "for loop"
 
 echo "this script is intended to create 3 column timing files in the format required by fsl for feat fmri analysis"
 echo "for use when paradigm is in "fixation, condition A, fixation, condition B..." format"
 echo "written by Desiree Lussier"
 echo "https://github.com/dllussier/"
+
+#indicate the name of the stimulus conditions as specified by eprime in the lines that read "StimType" using exact spelling, including any numbers and capitalization
+#condition_A=
+#condition_B=
+
+#for loop, uncomment section below down to "cd $i/$directory" line and at the bottom of the script that is indicated. then edit to incude subject list and directory where individual subject eprime.txt may be found
+#subject_list=
+#directory=
+#for i in $subject_list
+#do
+
+#cd $i/$directory
 
 #extracts stimulus types from original eprime text file and writes to a new file "stimtype"
 while IFS= read -r line; do
@@ -55,5 +69,9 @@ line=$(head -1 stimtype.txt)
 
 #deletes unnecessary files
 rm stimtype.txt durationextract.txt allcolumn.txt stimtiming.txt
+
+#uncomment next two lines for use with for loop above and then comment out last line
+#echo "fixation and stimulus timing file creation complete for " $i
+#done
 
 echo "fixation and stimulus timing file creation complete"
